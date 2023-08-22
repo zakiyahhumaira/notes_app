@@ -114,7 +114,7 @@ class _BookScreenState extends State<BookScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(10, 110, 189, 1),
-        title: Text('Book Screen'),
+        title: Text('Booklist'),
       ),
       body: ListView.builder(
         itemCount: notes.length,

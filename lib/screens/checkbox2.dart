@@ -114,7 +114,7 @@ class _NoteScreenState extends State<NoteScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(10, 110, 189, 1),
-        title: Text('Notes Screen'),
+        title: Text('Hometown Food'),
       ),
       body: ListView.builder(
         itemCount: notes.length,

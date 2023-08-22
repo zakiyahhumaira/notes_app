@@ -1,8 +1,7 @@
 import 'package:yapp/screens/checkbox2.dart';
-import 'package:yapp/screens/maroon.dart';
-import 'package:yapp/screens/student.dart';
 import 'package:flutter/material.dart';
 import 'checkbox1.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -96,7 +95,7 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                   SizedBox(width: 8.0),
                                   Text(
-                                    'Book Screen',
+                                    'Booklist',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
@@ -133,7 +132,7 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                   SizedBox(width: 8.0),
                                   Text(
-                                    'Note Screen',
+                                    'Hometown Food',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
@@ -143,48 +142,11 @@ class ProfilePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 20.0),
+                          SizedBox(height: 40.0),
                           // Tambahkan elemen lain di sini
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                                size: 20.0,
-                              ),
-                              SizedBox(width: 8.0),
-                              Text(
-                                'Github:  ',
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
-                              ),
-                              SelectableText(
-                                'https://github.com/zakiyahhumaira',
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                                size: 20.0,
-                              ),
-                              SizedBox(width: 8.0),
-                              Text(
-                                'Instagram:  ',
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
-                              ),
-                              SelectableText(
-                                '@zakiyah.h_',
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
-                              )
-                            ],
-                          ),
+                          GithubLinkWidget(),
+                          SizedBox(height: 10.0),
+                          InstagramLinkWidget(),
                         ],
                       ),
                     ],
@@ -194,6 +156,92 @@ class ProfilePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class InstagramLinkWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        String instagramUrl = 'https://www.instagram.com/zakiyah.h_';
+        // ignore: deprecated_member_use
+        if (await canLaunch(instagramUrl)) {
+          // ignore: deprecated_member_use
+          await launch(instagramUrl);
+        } else {
+          print('Tidak dapat membuka tautan Instagram');
+        }
+      },
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/images/ig.png', // Sesuaikan dengan nama berkas gambar Anda
+            width: 20.0, // Sesuaikan ukuran gambar
+            height: 20.0,
+          ),
+          SizedBox(width: 8.0),
+          Text(
+            'Instagram:  ',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            '@zakiyah.h_',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white,
+              decoration: TextDecoration.underline,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class GithubLinkWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        String githubUrl = 'https://github.com/zakiyahhumaira';
+        // ignore: deprecated_member_use
+        if (await canLaunch(githubUrl)) {
+          // ignore: deprecated_member_use
+          await launch(githubUrl);
+        } else {
+          print('Tidak dapat membuka tautan Instagram');
+        }
+      },
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/images/github.png', // Sesuaikan dengan nama berkas gambar Anda
+            width: 20.0, // Sesuaikan ukuran gambar
+            height: 20.0,
+          ),
+          SizedBox(width: 8.0),
+          Text(
+            'Github:  ',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'zakiyahhumaira',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white,
+              decoration: TextDecoration.underline,
+            ),
+          )
+        ],
       ),
     );
   }
